@@ -24,6 +24,10 @@ public class OI {
     public OI() {
     	Button1.whenPressed(new ShootBoulder());
     }
+    
+    public Joystick getJoystick() {
+    	return driveStick;
+    }
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
