@@ -23,7 +23,7 @@ public class DriveTrain extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.DriveWithJoystick.ArcadeDrive(Robot.oi.getJoystick(),1,0);
+    	Robot.DriveWithJoystick.ArcadeDrive(Robot.oi.getJoystickForwardAngle()*Robot.oi.getMappedJoystickThrottle(),Robot.oi.getJoystickLeftRightAngle()*Robot.oi.getMappedJoystickThrottle()*0.85);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5737.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -18,11 +19,14 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
-	private Joystick driveStick = new Joystick(0);
-    private JoystickButton Button1 = new JoystickButton(driveStick, 1);
+    public Joystick driveStick = new Joystick(0);
+    public JoystickButton shootBoulderButton = new JoystickButton(driveStick, 1);
+    public JoystickButton moveShooterUpButton = new JoystickButton(driveStick, 3);
+    public JoystickButton moveShooterDownButton = new JoystickButton(driveStick, 4);
+    
     
     public OI() {
-    	Button1.whenPressed(new ShootBoulder());
+  
     }
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
@@ -46,5 +50,31 @@ public class OI {
     public Joystick getJoystick(){
     	return driveStick;
     }
-}
-
+     
+    public int getDrivePOV(int POV){
+    	return driveStick.getPOV(POV);
+    }
+    
+    public boolean getButtonState(){
+    	return shootBoulderButton.get();
+    }
+    
+    public double getJoystickLeftRightAngle(){
+    	return driveStick.getAxis(AxisType.kX);
+    }
+    
+    public double getJoystickForwardAngle(){
+    	return driveStick.getAxis(AxisType.kY);
+    }
+   
+    public double getJoystickThrottle(){
+    	return -driveStick.getAxis(AxisType.kThrottle);
+    }
+    
+    public double getMappedJoystickThrottle(){    	
+    	double Throttle;
+    	Throttle = (getJoystickThrottle()+1)/2;
+    	return Throttle;
+    }
+    	
+    }
