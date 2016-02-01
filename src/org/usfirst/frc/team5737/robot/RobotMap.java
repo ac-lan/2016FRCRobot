@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5737.robot;
 
+import java.awt.color.ICC_ColorSpace;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -13,8 +15,12 @@ public class RobotMap {
     public static int MotorLB = 3;
     public static int MotorRF = 0;
     public static int MotorRB = 1;
-    public static int boulderEaterL = 5;
-    public static int boulderEaterR = 6; 
+    public static int boulderEaterL = 4;
+    public static int boulderEaterR = 6;
+    public static int moveShooter = 5;
+    public static int optSwitchBall = 1;
+    public static int limitSwitchUp = 2;
+    public static int limitSwitchDown = 3;
     
     
     // If you are using multiple modules, make sure to define both the port

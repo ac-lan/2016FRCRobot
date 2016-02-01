@@ -32,9 +32,10 @@ public class DriveWithJoystick extends Subsystem {
 	}
 	 
     
-	 public void ArcadeDrive(Joystick driveStick,int axisForward,int axisRotate){
-		 driveTrain.arcadeDrive(driveStick,axisForward, driveStick, axisRotate,true);
+	 public void ArcadeDrive(double angleForward, double angleRotate){
+		 driveTrain.arcadeDrive(angleForward, angleRotate);
 	 }
+	 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

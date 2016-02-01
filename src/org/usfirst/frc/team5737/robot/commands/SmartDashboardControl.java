@@ -1,16 +1,21 @@
 package org.usfirst.frc.team5737.robot.commands;
 
-import org.usfirst.frc.team5737.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team5737.robot.Robot;
+
+import edu.wpi.first.wpilibj.*;
 
 /**
  *
  */
-public class ShootBoulder extends Command {
+public class SmartDashboardControl extends Command {
 
-    public ShootBoulder() {
+    public SmartDashboardControl() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.boulderShooter);
+        // eg. requires(chassis);
+    	
     }
 
     // Called just before this Command runs the first time
@@ -19,17 +24,10 @@ public class ShootBoulder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.shootBoulderButton.get()){
-    		if(Robot.boulderShooter.getOptSwitchBall()){
-    			Robot.boulderShooter.stopShoot();
-    		}
-    		else{
-    			Robot.boulderShooter.boulderShoot(1, 1);
-    		}
-    	}
-    	else{
-    		Robot.boulderShooter.stopShoot();
-    	}
+    	SmartDashboard.putNumber("Throttle: ", Robot.oi.getJoystickThrottle());
+    	SmartDashboard.putNumber("Mapped Throttle Value", Robot.oi.getMappedJoystickThrottle());
+    	SmartDashboard.putNumber("vertically direction value", Robot.oi.getJoystickForwardAngle());
+    	SmartDashboard.putNumber("horrizantally diretion value", Robot.oi.getJoystickLeftRightAngle());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,7 +37,6 @@ public class ShootBoulder extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.boulderShooter.stopShoot();
     }
 
     // Called when another command which requires one or more of the same
