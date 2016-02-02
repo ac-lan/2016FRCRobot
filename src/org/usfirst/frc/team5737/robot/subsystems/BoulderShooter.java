@@ -9,6 +9,7 @@ import org.usfirst.frc.team5737.robot.commands.ShootBoulder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Servo;
 
 /**
  
@@ -16,11 +17,13 @@ import edu.wpi.first.wpilibj.DigitalInput;
 public class BoulderShooter extends Subsystem {
 	private VictorSP boulderEaterL,boulderEaterR;
 	private DigitalInput optSwitchBall;
+	private Servo pushBoulder;
 	
 	public BoulderShooter(){
 		 boulderEaterL = new VictorSP(RobotMap.boulderEaterL);
 		 boulderEaterR = new VictorSP(RobotMap.boulderEaterR);
 		 optSwitchBall = new DigitalInput(RobotMap.optSwitchBall);
+		 pushBoulder = new Servo(RobotMap.pushBoulder);
 	}
     
     // Put methods for controlling this subsystem
@@ -41,6 +44,14 @@ public class BoulderShooter extends Subsystem {
     
     public boolean getOptSwitchBall(){
     	return optSwitchBall.get();
+    }
+    
+    public void boulderPush(double pushBoulderSpeed){
+    	pushBoulder.set(pushBoulderSpeed);
+    }
+    
+    public void stopPush(){
+    	pushBoulder.set(0);
     }
 }
 

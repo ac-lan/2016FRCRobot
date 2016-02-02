@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ShootBoulder extends Command {
+	
+	boolean switchInstalled = false;
 
     public ShootBoulder() {
         // Use requires() here to declare subsystem dependencies
@@ -19,17 +21,45 @@ public class ShootBoulder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.oi.shootBoulderButton.get()){
-    		if(Robot.boulderShooter.getOptSwitchBall()){
-    			Robot.boulderShooter.stopShoot();
+    	//eatBoulder
+    	if (switchInstalled == true){
+	    	if(Robot.oi.eatBoulderButton.get()){
+	    		if(Robot.boulderShooter.getOptSwitchBall()){
+	    			Robot.boulderShooter.stopShoot();
+	    		}
+	    		else{
+	    			Robot.boulderShooter.boulderShoot(-1, -1);
+	    		}
+	    	}
+	    	else{
+	    		Robot.boulderShooter.stopShoot();
+	    	}
+    	}
+    	else if (switchInstalled == false){
+    		if(Robot.oi.eatBoulderButton.get()){
+    			Robot.boulderShooter.boulderShoot(-1, -1);
     		}
     		else{
-    			Robot.boulderShooter.boulderShoot(1, 1);
+    			Robot.boulderShooter.stopShoot();
     		}
+    	}
+    	
+    	//shootBoulder
+    	if(Robot.oi.shootBoulderButton.get()){
+    		Robot.boulderShooter.boulderShoot(1, 1);
     	}
     	else{
     		Robot.boulderShooter.stopShoot();
     	}
+    	
+    	/*pushBoulder
+    	if(Robot.oi.shootBoulderButton.get()){
+    		Robot.boulderShooter.boulderPush(0.75);
+    	}
+    	else{
+    		Robot.boulderShooter.stopPush();
+    	}
+    	*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -40,6 +70,7 @@ public class ShootBoulder extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.boulderShooter.stopShoot();
+    	Robot.boulderShooter.stopPush();
     }
 
     // Called when another command which requires one or more of the same

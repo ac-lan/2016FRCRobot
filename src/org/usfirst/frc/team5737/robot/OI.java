@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
+import javax.swing.JOptionPane;
+
 import org.usfirst.frc.team5737.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5737.robot.commands.ShootBoulder;
 
@@ -21,9 +23,13 @@ public class OI {
     // Button button = new JoystickButton(stick, buttonNumber);
     public Joystick driveStick = new Joystick(0);
     public JoystickButton shootBoulderButton = new JoystickButton(driveStick, 1);
+    public JoystickButton eatBoulderButton = new JoystickButton(driveStick, 2);
     public JoystickButton moveShooterUpButton = new JoystickButton(driveStick, 3);
     public JoystickButton moveShooterDownButton = new JoystickButton(driveStick, 4);
-    
+    public JoystickButton armUpButton = new JoystickButton(driveStick, 5);
+    public JoystickButton armDownButton = new JoystickButton(driveStick, 6);
+    public JoystickButton frontBoulderOutButton = new JoystickButton(driveStick, 8);
+    public JoystickButton frontBoulderInButton = new JoystickButton(driveStick, 10);
     
     public OI() {
   
@@ -76,5 +82,4 @@ public class OI {
     	Throttle = (getJoystickThrottle()+1)/2;
     	return Throttle;
     }
-    	
-    }
+ }

@@ -18,6 +18,9 @@ public class RobotMap {
     public static int boulderEaterL = 4;
     public static int boulderEaterR = 6;
     public static int moveShooter = 5;
+    public static int turnFrontWheels = 7;
+    public static int liftArm = 8;
+    public static int pushBoulder = 9;
     public static int optSwitchBall = 1;
     public static int limitSwitchUp = 2;
     public static int limitSwitchDown = 3;
